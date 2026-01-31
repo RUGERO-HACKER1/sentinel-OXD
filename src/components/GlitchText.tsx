@@ -18,7 +18,6 @@ export const GlitchText: React.FC<GlitchTextProps> = ({
     onComplete
 }) => {
     const [displayText, setDisplayText] = useState(text);
-    const [cycle, setCycle] = useState(0);
 
     useEffect(() => {
         if (!isActive) {
@@ -30,10 +29,10 @@ export const GlitchText: React.FC<GlitchTextProps> = ({
         let iteration = 0;
 
         interval = setInterval(() => {
-            setDisplayText(prev =>
+            setDisplayText(_ =>
                 text
                     .split("")
-                    .map((char, index) => {
+                    .map((_, index) => {
                         if (index < iteration) {
                             return text[index];
                         }

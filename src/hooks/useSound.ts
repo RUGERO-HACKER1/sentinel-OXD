@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 type SoundType = 'hover' | 'click' | 'scan' | 'success' | 'fail' | 'alarm' | 'typing' | 'reveal';
 

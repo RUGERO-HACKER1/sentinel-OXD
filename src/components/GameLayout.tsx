@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { useSound } from '../hooks/useSound';
 import { EventStream } from './EventStream';
-import { Activity, Shield, Trophy, Volume2, VolumeX, Maximize, Minimize } from 'lucide-react';
+import { Activity, Trophy, Volume2, VolumeX, Maximize, Minimize } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import { FloatingTextOverlay } from './FloatingText';
 import { ComboMeter } from './ComboMeter';
@@ -53,7 +53,7 @@ const TOUR_STEPS = [
 
 export const GameLayout: React.FC = () => {
     const gameState = useGame();
-    const { trust, score, gameOver, floatingTexts, level, gameMode, currentTurn, playerScore, computerScore, roundNumber, maxRounds } = gameState;
+    const { trust, score, gameOver, floatingTexts, level, gameMode } = gameState;
     const { toggleMusic, isMusicPlaying } = useSound();
     const { showTutorial, currentStep, nextStep, completeTutorial } = useTutorial();
     const controls = useAnimation();
@@ -131,8 +131,8 @@ export const GameLayout: React.FC = () => {
                         {gameState.gameMode === 'VS_COMPUTER' && (
                             <div className="flex items-center gap-4">
                                 <div className={`px - 4 py - 2 rounded border - 2 transition - all ${gameState.currentTurn === 'PLAYER'
-                                        ? 'border-cyber-primary bg-cyber-primary/10 text-cyber-primary text-shadow-neon'
-                                        : 'border-cyber-accent/30 bg-cyber-accent/5 text-cyber-accent/50'
+                                    ? 'border-cyber-primary bg-cyber-primary/10 text-cyber-primary text-shadow-neon'
+                                    : 'border-cyber-accent/30 bg-cyber-accent/5 text-cyber-accent/50'
                                     } `}>
                                     <div className="text-[10px] uppercase tracking-wider opacity-70">Your Turn</div>
                                     <div className="text-xs font-bold">{gameState.currentTurn === 'PLAYER' ? '🎯 ACTIVE' : '⏸ WAITING'}</div>

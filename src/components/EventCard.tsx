@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { GameEvent } from '../types';
 import { useGame } from '../context/GameContext';
 import { GlitchText } from './GlitchText';
@@ -14,11 +14,8 @@ interface EventCardProps {
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
     const { analyzeEvent, processDecision, gameMode, currentTurn } = useGame();
     const { playSound } = useSound();
-    const [isExpanding, setIsExpanding] = useState(false);
-
     const handleAnalyze = () => {
         playSound('reveal');
-        setIsExpanding(true);
         analyzeEvent(event.id);
     };
 

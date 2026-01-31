@@ -417,7 +417,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     const selectGameMode = useCallback((mode: GameMode) => {
-        setGameState(prev => ({
+        setGameState(() => ({
             ...INITIAL_STATE,
             gameMode: mode,
             isPlaying: true,

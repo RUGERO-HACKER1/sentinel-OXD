@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useGame } from '../context/GameContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap } from 'lucide-react';
 
 export const ComboMeter: React.FC = () => {
     const { streak, multiplier } = useGame();
