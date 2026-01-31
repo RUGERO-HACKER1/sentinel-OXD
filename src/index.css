@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-dark: #050510;
+  --color-cyber-panel: #0f1020;
+  --color-cyber-primary: #00ff9d;
+  --color-cyber-primary-dim: #00ff9d40;
+  --color-cyber-warning: #ffbe0b;
+  --color-cyber-danger: #ff0055;
+  --color-cyber-accent: #00d9f9;
+  --color-cyber-muted: #565d75;
+  --color-cyber-border: #2a2a45;
+
+  --font-mono: "Share Tech Mono", monospace;
+  --font-sans: "Rajdhani", sans-serif;
+
+  --animate-pulse-fast: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-spin-slow: spin 4s linear infinite;
+  --animate-scanline: scanline 8s linear infinite;
+
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+    }
+
+    100% {
+      transform: translateY(100%);
+    }
+  }
+}
+
+:root {
+  --color-bg: var(--color-cyber-dark);
+  --color-text: #e0e0e0;
+}
+
+body {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 50% 50%, #0f1225 0%, #000 100%),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 1px, #001122 1px, #001122 2px);
+  background-size: 100% 100%, 100% 4px;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cyber Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-cyber-border);
+  border: 1px solid var(--color-cyber-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cyber-primary);
+}
+
+@layer utilities {
+  .text-shadow-neon {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+  }
+
+  .box-shadow-neon-blue {
+    box-shadow: 0 0 5px #00d9f9, 0 0 15px #00d9f940;
+  }
+
+  .box-shadow-neon-green {
+    box-shadow: 0 0 5px #00ff9d, 0 0 15px #00ff9d40;
+  }
+
+  .glass-panel {
+    background: rgba(15, 20, 35, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Angled Corners using clip-path */
+  .clip-corner-br {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  }
+
+  .clip-corner-both {
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  }
+
+  .scanline-overlay {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+}
