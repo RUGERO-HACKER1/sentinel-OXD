@@ -1,15 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, Cpu, Sparkles } from 'lucide-react';
+import { User, Cpu, Sparkles, BookOpen } from 'lucide-react';
 import type { GameMode } from '../types';
+import { GuideOverlay } from './GuideOverlay';
+import { useTutorial } from '../hooks/useTutorial';
 
 interface ModeSelectorProps {
     onSelectMode: (mode: GameMode) => void;
 }
 
 export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
+    const { showTutorial, completeTutorial } = useTutorial();
+    // We can use local state to toggle the guide manually too
+    const [isGuideOpen, setIsGuideOpen] = React.useState(false);
+
+    // Sync hook state with local state for auto-show
+    React.useEffect(() => {
+        if (showTutorial) {
+            setIsGuideOpen(true);
+        }
+    }, [showTutorial]);
+
+    const handleCloseGuide = () => {
+        setIsGuideOpen(false);
+        completeTutorial();
+    };
+
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-cyber-dark text-center p-4 relative overflow-hidden">
+            <GuideOverlay isVisible={isGuideOpen} onClose={handleCloseGuide} />
+
             {/* Background Effects */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(5,5,16,0.98),rgba(5,5,16,0.98)),url('https://grainy-gradients.vercel.app/noise.svg')] opacity-60 pointer-events-none"></div>
             <div className="absolute inset-0 scanline-overlay opacity-20 pointer-events-none"></div>
@@ -25,11 +45,22 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
                 <h1 className="text-6xl font-black text-cyber-primary mb-4 tracking-widest italic text-shadow-neon">
                     sentinel OXD
                 </h1>
-                <p className="text-cyber-accent text-sm font-mono tracking-[0.3em] uppercase mb-12 opacity-80">
+                <p className="text-cyber-accent text-sm font-mono tracking-[0.3em] uppercase mb-8 opacity-80">
                     National AI Defense Graph
                 </p>
 
-                <h2 className="text-2xl font-bold text-gray-300 mb-12 font-mono">
+                {/* Manual Guide Button */}
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setIsGuideOpen(true)}
+                    className="mb-12 px-6 py-2 border border-cyber-muted/30 text-cyber-muted hover:text-white hover:border-white/50 rounded-full text-xs font-mono tracking-widest flex items-center gap-2 mx-auto transition-all"
+                >
+                    <BookOpen className="w-3 h-3" />
+                    OPERATOR MANUAL
+                </motion.button>
+
+                <h2 className="text-2xl font-bold text-gray-300 mb-8 font-mono">
                     SELECT GAME MODE
                 </h2>
 

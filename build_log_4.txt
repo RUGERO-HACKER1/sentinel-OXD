@@ -1,0 +1,2 @@
+src/components/GuideOverlay.tsx(3,40): error TS2724: '"lucide-react"' has no exported member named 'shield'. Did you mean 'Shield'?
+src/components/GuideOverlay.tsx(3,40): error TS6133: 'shield' is declared but its value is never read.

@@ -83,7 +83,24 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
             return;
         }
 
-        // SOLO Mode: Standard Stream Mode
+        // SOLO Mode: Original spawning logic
+        // Level 1: Only spawn if NO events exist (Single Transaction Mode)
+        if (gameState.level === 1) {
+            if (gameState.events.length === 0) {
+                // Small delay before spawning next one for pacing
+                const timer = setTimeout(() => {
+                    const newEvent = generateEvent(gameState.cycle);
+                    setGameState(prev => ({
+                        ...prev,
+                        events: [newEvent],
+                    }));
+                }, 1000);
+                return () => clearTimeout(timer);
+            }
+            return;
+        }
+
+        // Level 2+: Standard Stream Mode
         const baseInterval = 2000;
         const speedMultiplier = Math.min(0.6, (gameState.cycle - 1) * 0.1);
         const spawnInterval = Math.max(800, baseInterval * (1 - speedMultiplier));

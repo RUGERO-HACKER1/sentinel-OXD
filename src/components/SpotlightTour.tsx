@@ -164,7 +164,7 @@ export const SpotlightTour: React.FC<SpotlightTourProps> = ({
                 </svg>
 
                 {/* Info Card */}
-                {(targetRect || step.targetId === 'center-screen') && (
+                {targetRect && (
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}

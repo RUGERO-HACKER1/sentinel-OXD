@@ -7,18 +7,13 @@ import { motion, useAnimation } from 'framer-motion';
 import { FloatingTextOverlay } from './FloatingText';
 import { ComboMeter } from './ComboMeter';
 import { MissionReport } from './MissionReport';
-import { SpotlightTour } from './SpotlightTour';
-import { useTutorial } from '../hooks/useTutorial';
 import { CipherBackground } from './CipherBackground';
 import { LevelSidebar } from './LevelSidebar';
-
-import { TOUR_STEPS } from '../data/tourSteps';
 
 export const GameLayout: React.FC = () => {
     const gameState = useGame();
     const { trust, score, gameOver, floatingTexts, level, gameMode } = gameState;
     const { toggleMusic, isMusicPlaying } = useSound();
-    const { showTutorial, currentStep, nextStep, completeTutorial } = useTutorial();
     const controls = useAnimation();
     const [isFullscreen, setIsFullscreen] = React.useState(false);
 
@@ -67,13 +62,7 @@ export const GameLayout: React.FC = () => {
             <div className="absolute inset-0 scanline-overlay opacity-30 pointer-events-none"></div>
 
             {/* UI Overlay */}
-            <SpotlightTour
-                isVisible={showTutorial}
-                currentStep={currentStep}
-                steps={TOUR_STEPS}
-                onNext={nextStep}
-                onComplete={completeTutorial}
-            />
+
             <FloatingTextOverlay items={floatingTexts} />
             <ComboMeter />
 
