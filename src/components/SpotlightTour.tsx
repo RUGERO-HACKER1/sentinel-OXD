@@ -163,8 +163,8 @@ export const SpotlightTour: React.FC<SpotlightTourProps> = ({
                     )}
                 </svg>
 
-                {/* Info Card */}
-                {targetRect && (
+                {/* Info Card - Always render, fallback to center if no target */}
+                {(targetRect || step) && (
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}

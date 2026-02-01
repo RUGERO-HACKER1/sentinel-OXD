@@ -18,9 +18,10 @@ export const useTutorial = () => {
 
         // Check Dashboard Tour (only if we're not showing guide)
         // Note: usage of this hook in GameLayout will trigger this check independently
-        const hasSeenDashboard = localStorage.getItem('sentinel_dashboard_tour_v1');
+        // UPDATED key to force tour for debugging
+        const hasSeenDashboard = localStorage.getItem('sentinel_dashboard_tour_debug_v2');
         if (!hasSeenDashboard) {
-            const timer = setTimeout(() => setShowDashboardTour(true), 2000); // Wait a bit longer for game to load
+            const timer = setTimeout(() => setShowDashboardTour(true), 1500); // reduced delay slightly
             return () => clearTimeout(timer);
         }
     }, []);
@@ -31,7 +32,7 @@ export const useTutorial = () => {
     };
 
     const completeDashboardTour = () => {
-        localStorage.setItem('sentinel_dashboard_tour_v1', 'true');
+        localStorage.setItem('sentinel_dashboard_tour_debug_v2', 'true');
         setShowDashboardTour(false);
     };
 
