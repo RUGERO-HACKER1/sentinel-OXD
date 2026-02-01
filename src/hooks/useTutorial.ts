@@ -5,7 +5,7 @@ export const useTutorial = () => {
     const [currentStep, setCurrentStep] = useState(0);
 
     useEffect(() => {
-        const hasSeenTutorial = localStorage.getItem('sentinel_tutorial_seen');
+        const hasSeenTutorial = localStorage.getItem('sentinel_tour_v2');
         if (!hasSeenTutorial) {
             // Small delay to let the UI load
             const timer = setTimeout(() => {
@@ -16,7 +16,7 @@ export const useTutorial = () => {
     }, []);
 
     const completeTutorial = () => {
-        localStorage.setItem('sentinel_tutorial_seen', 'true');
+        localStorage.setItem('sentinel_tour_v2', 'true');
         setShowTutorial(false);
     };
 
