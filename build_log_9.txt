@@ -1,0 +1,1 @@
+src/components/GameLayout.tsx(116,38): error TS2304: Cannot find name 'LevelSidebar'.

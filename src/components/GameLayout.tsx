@@ -9,6 +9,41 @@ import { ComboMeter } from './ComboMeter';
 import { MissionReport } from './MissionReport';
 import { CipherBackground } from './CipherBackground';
 import { LevelSidebar } from './LevelSidebar';
+import { SpotlightTour } from './SpotlightTour';
+import { useTutorial } from '../hooks/useTutorial';
+
+const DASHBOARD_TOUR_STEPS = [
+    {
+        targetId: 'event-stream-area',
+        title: "THE CHAOS STREAM",
+        content: "This is your primary feed. Analyze incoming data packets. Use DEEP SCAN to reveal threats. ALLOW safe data, BLOCK threats.",
+        position: 'center' as const
+    },
+    {
+        targetId: 'trust-meter',
+        title: "SYSTEM INTEGRITY",
+        content: "This is your life. Every mistake drops your Trust. If it hits 0%, the network collapses and you're fired.",
+        position: 'bottom' as const
+    },
+    {
+        targetId: 'score-display',
+        title: "PERFORMANCE",
+        content: "Track your neutralized threats here. Build a COMBO by chaining correct decisions to multiply your score.",
+        position: 'bottom' as const
+    },
+    {
+        targetId: 'level-display',
+        title: "SECURITY CLEARANCE",
+        content: "As you survive, your Level increases. Higher levels unlock tougher enemies.",
+        position: 'bottom' as const
+    },
+    {
+        targetId: 'audio-control',
+        title: "AUDIO UPLINK",
+        content: "Toggle the localized synth-wave audio feed here. Essential for operator focus.",
+        position: 'bottom' as const
+    }
+];
 
 export const GameLayout: React.FC = () => {
     const gameState = useGame();
@@ -16,6 +51,9 @@ export const GameLayout: React.FC = () => {
     const { toggleMusic, isMusicPlaying } = useSound();
     const controls = useAnimation();
     const [isFullscreen, setIsFullscreen] = React.useState(false);
+
+    // Dashboard Tour Integration
+    const { showDashboardTour, currentDashboardStep, nextDashboardStep, completeDashboardTour } = useTutorial();
 
     const toggleFullscreen = () => {
         if (!document.fullscreenElement) {
@@ -60,6 +98,15 @@ export const GameLayout: React.FC = () => {
             {/* Immersive Layers */}
             <CipherBackground />
             <div className="absolute inset-0 scanline-overlay opacity-30 pointer-events-none"></div>
+
+            {/* Dashboard Tour */}
+            <SpotlightTour
+                isVisible={showDashboardTour}
+                currentStep={currentDashboardStep}
+                steps={DASHBOARD_TOUR_STEPS}
+                onNext={nextDashboardStep}
+                onComplete={completeDashboardTour}
+            />
 
             {/* UI Overlay */}
 
@@ -122,7 +169,7 @@ export const GameLayout: React.FC = () => {
                             <>
                                 {/* Solo Mode: Original Stats */}
                                 {/* Level Display */}
-                                <div className="flex flex-col items-end gap-1">
+                                <div id="level-display" className="flex flex-col items-end gap-1">
                                     <span className="text-[10px] text-cyber-muted uppercase tracking-wider">SEC LEVEL</span>
                                     <div className="flex items-center gap-2 text-xl font-bold text-cyber-primary text-shadow-neon">
                                         <span>{level}</span>
@@ -204,7 +251,7 @@ export const GameLayout: React.FC = () => {
 
                 {/* Main Content Area */}
                 <main className="flex-1 relative z-10 p-6 flex justify-center min-h-0 overflow-hidden">
-                    <div className="w-full max-w-7xl h-full relative">
+                    <div id="event-stream-area" className="w-full max-w-7xl h-full relative">
                         {/* Decorative Brackets for Main Feed */}
                         <div className="absolute -left-4 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-cyber-primary/30 to-transparent"></div>
                         <div className="absolute -right-4 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-cyber-primary/30 to-transparent"></div>
