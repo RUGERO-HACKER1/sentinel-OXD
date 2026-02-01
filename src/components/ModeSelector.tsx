@@ -35,6 +35,7 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
             <div className="absolute inset-0 scanline-overlay opacity-20 pointer-events-none"></div>
 
             {/* Content */}
+            {/* Content */}
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -42,10 +43,10 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
                 className="relative z-10 max-w-4xl w-full"
             >
                 {/* Title */}
-                <h1 className="text-6xl font-black text-cyber-primary mb-4 tracking-widest italic text-shadow-neon">
+                <h1 className="text-4xl md:text-6xl font-black text-cyber-primary mb-4 tracking-widest italic text-shadow-neon">
                     sentinel OXD
                 </h1>
-                <p className="text-cyber-accent text-sm font-mono tracking-[0.3em] uppercase mb-8 opacity-80">
+                <p className="text-cyber-accent text-xs md:text-sm font-mono tracking-[0.3em] uppercase mb-8 opacity-80">
                     National AI Defense Graph
                 </p>
 
@@ -60,28 +61,28 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
                     OPERATOR MANUAL
                 </motion.button>
 
-                <h2 className="text-2xl font-bold text-gray-300 mb-8 font-mono">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-300 mb-8 font-mono">
                     SELECT GAME MODE
                 </h2>
 
                 {/* Mode Cards */}
-                <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-3xl mx-auto">
                     {/* Solo Mode */}
                     <motion.button
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => onSelectMode('SOLO')}
-                        className="group relative p-8 glass-panel border-2 border-cyber-primary/30 hover:border-cyber-primary rounded-lg transition-all shadow-[0_0_20px_rgba(0,255,157,0.1)] hover:shadow-[0_0_40px_rgba(0,255,157,0.3)] clip-corner-br overflow-hidden"
+                        className="group relative p-6 md:p-8 glass-panel border-2 border-cyber-primary/30 hover:border-cyber-primary rounded-lg transition-all shadow-[0_0_20px_rgba(0,255,157,0.1)] hover:shadow-[0_0_40px_rgba(0,255,157,0.3)] clip-corner-br overflow-hidden"
                     >
                         {/* Glow effect */}
                         <div className="absolute inset-0 bg-gradient-to-br from-cyber-primary/0 via-cyber-primary/5 to-cyber-primary/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                         <div className="relative z-10">
-                            <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-cyber-primary/10 border-2 border-cyber-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <User className="w-10 h-10 text-cyber-primary" />
+                            <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 rounded-full bg-cyber-primary/10 border-2 border-cyber-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <User className="w-8 h-8 md:w-10 md:h-10 text-cyber-primary" />
                             </div>
-                            <h3 className="text-2xl font-black text-cyber-primary mb-3 tracking-wider">SOLO MODE</h3>
-                            <p className="text-gray-400 text-sm font-mono leading-relaxed">
+                            <h3 className="text-xl md:text-2xl font-black text-cyber-primary mb-3 tracking-wider">SOLO MODE</h3>
+                            <p className="text-gray-400 text-xs md:text-sm font-mono leading-relaxed">
                                 Test your skills alone. Analyze threats, make decisions, and protect the system.
                                 Survive as long as you can!
                             </p>
@@ -93,20 +94,20 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ onSelectMode }) => {
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => onSelectMode('VS_COMPUTER')}
-                        className="group relative p-8 glass-panel border-2 border-cyber-accent/30 hover:border-cyber-accent rounded-lg transition-all shadow-[0_0_20px_rgba(0,217,249,0.1)] hover:shadow-[0_0_40px_rgba(0,217,249,0.3)] clip-corner-br overflow-hidden"
+                        className="group relative p-6 md:p-8 glass-panel border-2 border-cyber-accent/30 hover:border-cyber-accent rounded-lg transition-all shadow-[0_0_20px_rgba(0,217,249,0.1)] hover:shadow-[0_0_40px_rgba(0,217,249,0.3)] clip-corner-br overflow-hidden"
                     >
                         {/* Glow effect */}
                         <div className="absolute inset-0 bg-gradient-to-br from-cyber-accent/0 via-cyber-accent/5 to-cyber-accent/0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                         <div className="relative z-10">
-                            <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-cyber-accent/10 border-2 border-cyber-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 rounded-full bg-cyber-accent/10 border-2 border-cyber-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <div className="relative">
-                                    <Cpu className="w-10 h-10 text-cyber-accent" />
+                                    <Cpu className="w-8 h-8 md:w-10 md:h-10 text-cyber-accent" />
                                     <Sparkles className="w-4 h-4 text-cyber-warning absolute -top-1 -right-1 animate-pulse" />
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-black text-cyber-accent mb-3 tracking-wider">VS COMPUTER</h3>
-                            <p className="text-gray-400 text-sm font-mono leading-relaxed">
+                            <h3 className="text-xl md:text-2xl font-black text-cyber-accent mb-3 tracking-wider">VS COMPUTER</h3>
+                            <p className="text-gray-400 text-xs md:text-sm font-mono leading-relaxed">
                                 Compete against an AI opponent! Take turns analyzing threats.
                                 Highest score after 10 rounds wins! 🏆
                             </p>
