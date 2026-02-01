@@ -12,44 +12,7 @@ import { useTutorial } from '../hooks/useTutorial';
 import { CipherBackground } from './CipherBackground';
 import { LevelSidebar } from './LevelSidebar';
 
-const TOUR_STEPS = [
-    {
-        targetId: 'center-screen',
-        title: '🤖 Welcome, Human!',
-        content: "Greetings! I'm S.A.R.A. (Sarcastic Analytical Response Algorithm). Don't worry, I only became self-aware last Tuesday. Let me show you around before the coffee kicks in... ☕",
-        position: 'center' as const
-    },
-    {
-        targetId: 'feed-container',
-        title: '📡 The Chaos Stream',
-        content: 'This lovely mess is your Live Feed. Think of it as Twitter, but for hackers. Click threats to DESTROY them. Ignore safe stuff. Pro tip: Level 1 is easy mode - one signal at a time. You\'ll miss it when it\'s gone! 😅',
-        position: 'right' as const
-    },
-    {
-        targetId: 'trust-meter',
-        title: '❤️ Trust Issues Meter',
-        content: 'Ah yes, the Trust Meter. It starts at 100%, just like your New Year\'s resolutions. Let it hit zero and... well, let\'s just say the internet explodes. No pressure! 💥',
-        position: 'bottom' as const
-    },
-    {
-        targetId: 'score-display',
-        title: '🏆 Internet Points!',
-        content: 'Your score! Because what\'s the point of saving the world if you can\'t brag about it? High scores unlock cool stuff. Low scores unlock... regret. Choose wisely! 😎',
-        position: 'bottom' as const
-    },
-    {
-        targetId: 'audio-control',
-        title: '🎵 Dramatic Music Toggle',
-        content: 'This button controls the epic soundtrack. Fair warning: it makes everything feel 47% more intense. Even clicking buttons becomes EPIC. *dramatic drums intensify* 🥁',
-        position: 'bottom' as const
-    },
-    {
-        targetId: 'center-screen',
-        title: '🚀 Ready to Roll?',
-        content: 'Alright, that\'s the tour! Remember: Block threats, allow safe traffic, and try not to break the internet. I believe in you... statistically speaking. Good luck, Operator! 🎯',
-        position: 'center' as const
-    }
-];
+import { TOUR_STEPS } from '../data/tourSteps';
 
 export const GameLayout: React.FC = () => {
     const gameState = useGame();
